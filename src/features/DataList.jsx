@@ -26,17 +26,17 @@ const DataList = () => {
     <div>
       <div>
         <h2>Tasks</h2>
-        <ul>
+        <ul className="space-y-4">
           {datas.map((d) => (
-            <li key={d.id}>
+            <li key={d.id} className="bg-gray-50 p-4 rounded-md shadow-sm flex justify-between">
               <div>
-                <p>{d.title}</p>
-                {d.description && <p>{d.description}</p>}
-                <p>Status: {d.status}</p>
+                <h3 className=" font-medium text-gray-800">{d.title}</h3>
+                {d.description && <p className="text-gray-600">{d.description}</p>}
+                <p className="mt-1 text-sm font-semibold">Status: <span className="italic underline">{d.status}</span></p>
               </div>
-              <div>
+              <div className="flex justify-center items-center space-x-1">
                 <EiditData d={d} />
-                <button onClick={() =>dispatch(deleteDatas(d.id))}>Delete</button>
+                <button className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600" onClick={() =>dispatch(deleteDatas(d.id))} >Delete</button>
               </div>
             </li>
           ))}
